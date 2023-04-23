@@ -21,8 +21,7 @@ class HomeController extends Controller
   public function index() {
     $t = Tienda::first();
 
-
-    if (!$t) { return redirect()->route('install.index'); }
+    if ($t->getConfigInstall()) { return redirect()->route('install.index'); }
     if ($t->getSeoEnabled()) { $this->seo($t->present()->dataSeo()); }
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
     $paginator = $t->getConfigPaginator();

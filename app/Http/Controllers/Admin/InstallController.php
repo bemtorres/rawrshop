@@ -11,7 +11,7 @@ class InstallController extends Controller
 {
   public function index() {
     $t = Tienda::first();
-    if (!$t) {
+    if ($t->getConfigInstall()) {
       $tipos = Tienda::TIPOS_WEB;
       return view('install.index', compact('tipos'));
     }
@@ -20,9 +20,9 @@ class InstallController extends Controller
 
   public function store(Request $request) {
     try {
-      $t = Tienda::first();
-      if (!$t) {
-        $t = new Tienda();
+      $t = Tienda::firstOrFail();
+      if ($t->getConfigInstall()) {
+        // $t = new Tienda();
         $password  = hash('sha256', $request->input('password'));
         $correo = $request->input('correo');
 
@@ -45,7 +45,7 @@ class InstallController extends Controller
         return redirect('/');
       }
     } catch (\Throwable $th) {
-      return $th;
+      return redirect('/');
     }
   }
 }

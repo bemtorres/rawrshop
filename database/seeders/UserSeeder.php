@@ -16,19 +16,22 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-      $password  = hash('sha256', '123456');
+      // $password  = hash('sha256', '123456');
 
-      $a = new Usuario();
-      $a->correo = 'admin@admin.cl';
-      $a->password = $password;
-      $a->nombre = 'Administrador plataforma';
-      $a->admin = true;
-      $a->save();
+      // $a = new Usuario();
+      // $a->correo = 'admin@admin.cl';
+      // $a->password = $password;
+      // $a->nombre = 'Administrador plataforma';
+      // $a->admin = true;
+      // $a->save();
 
       $t = new Tienda();
       $t->nombre = 'mi tienda';
       $t->correo = 'mitienda@rawrshop.cl';
       $t->direccion = '';
+      $t->config = [
+        'install' => true
+      ];
       $t->save();
       // $table->string('nombre');
       // $table->string('correo')->nullable();

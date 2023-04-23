@@ -16,7 +16,7 @@
                     <h4 class="card-title">Instalación</h4>
                     <p class="text-center">Nunca había sido tan fácil crear un sitio en linea</p>
                   </div>
-                  <img src="{{ asset('assets/rawrshop/shop.gif') }}" class="shadow rounded" alt="">
+                  <img src="{{ asset('base/assets/rawrshop/shop.gif') }}" class="shadow rounded" alt="">
                 </div>
               </div>
               <div class="col-md-6">

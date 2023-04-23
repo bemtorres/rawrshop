@@ -80,6 +80,10 @@ class Tienda extends Model
     return $this->config['seo'] ?? null;
   }
 
+  public function getConfigInstall() {
+    return $this->config['install'] ?? false;
+  }
+
   public function getMantenimientoEnabled() {
     return $this->estado == 2 ?  true : false;
   }

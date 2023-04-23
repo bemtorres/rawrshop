@@ -6,7 +6,7 @@
   <title>@yield('title', 'Rawrshop')</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ mix('base/css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('base/css/app.css') }}">
   <link rel="shortcut icon" href="{{ asset('base/assets/rawrshop/ico.svg') }}" type="image/svg">
   <style>
     body {
@@ -57,9 +57,9 @@
   </div>
   @stack('extra')
   <script src="{{ asset('base/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-  <script src="{{ mix('base/js/manifest.js') }}"></script>
-  <script src="{{ mix('base/js/vendor.js') }}"></script>
-  <script src="{{ mix('base/js/app.js') }}"></script>
+  <script src="{{ asset('base/js/manifest.js') }}"></script>
+  <script src="{{ asset('base/js/vendor.js') }}"></script>
+  <script src="{{ asset('base/js/app.js') }}"></script>
   @stack('javascript')
   @include('components._toast')
   <script src="{{ asset('base/vendors/mazer/js/main.js') }}"></script>
