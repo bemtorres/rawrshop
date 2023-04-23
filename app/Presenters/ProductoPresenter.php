@@ -25,7 +25,7 @@ class ProductoPresenter extends Presenter
 
   public function getThumbnails(){
     $img = $this->images[rand(0,1)];
-    $img_public = (new Imagen($this->model->assets['thumbnails_imagen'], null, $img))->call();
+    $img_public = (new Imagen($this->model->assets['thumbnails_imagen'] ?? null, null, $img))->call();
     if ($img != $img_public) {
       return $img_public;
     }

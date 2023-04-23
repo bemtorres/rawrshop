@@ -8,10 +8,10 @@
 @endpush
 @push('stylesheet')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/favorite.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/product.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/OwlCarousel/assets/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/OwlCarousel/assets/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/favorite.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/product.css') }}">
 @endpush
 @section('content')
 @include('home._banner')
@@ -248,8 +248,8 @@
 
 @endsection
 @push('javascript')
-<script src="{{ asset('vendor/dinobox/cart.js') }}"></script>
-<script src="{{ asset('vendor/rawrshop/menu.js') }}"></script>
+<script src="{{ asset('base/vendor/dinobox/cart.js') }}"></script>
+<script src="{{ asset('base/vendor/rawrshop/menu.js') }}"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
@@ -270,7 +270,7 @@
   });
 </script>
 
-<script src="{{ asset('vendor/OwlCarousel/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('base/vendor/OwlCarousel/owl.carousel.min.js')}}"></script>
 
 <script>
   $('.owl-carousel').owlCarousel({

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="{{ asset('vendor/chat/floating-wpp.js') }}"></script>
+<script type="text/javascript" src="{{ asset('base/vendor/chat/floating-wpp.js') }}"></script>
 <script type="text/javascript">
   $(function () {
     $('#myChat').floatingWhatsApp({
@@ -13,7 +13,7 @@
       // backgroundColor: 'crimson',
       size: "{{ $t->presentRRSS()->chat('size') }}px",
       position: "right",
-      buttonImage: '<img src="/vendor/chat/whatsapp.svg" alt="img-whatsapp" />'
+      buttonImage: '<img src="base/vendor/chat/whatsapp.svg" alt="img-whatsapp" />'
     });
   });
 </script>

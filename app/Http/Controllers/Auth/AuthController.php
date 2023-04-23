@@ -24,6 +24,7 @@ class AuthController extends Controller
       $u = Usuario::where('correo',$request->input('email'))->firstOrFail();
       $pass = hash('sha256', $request->input('password'));
       if($u->password==$pass){
+
         Auth::guard('usuario')->loginUsingId($u->id);
         $t = Tienda::first();
         session(['tienda' => $t]);
@@ -32,6 +33,7 @@ class AuthController extends Controller
         return back()->with('info','Error. Intente nuevamente.');
       }
     } catch (\Throwable $th) {
+      return $th;
       return back()->with('info','Error. Intente nuevamente.');
     }
   }

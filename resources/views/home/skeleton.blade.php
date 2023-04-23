@@ -113,9 +113,9 @@
 
   <div id="dinobox_request" data-product-find="{{ route('api.v1.product.find') }}" data-phone="{{ $t->presentRRSS()->redes('whatsapp') }}"></div>
   @stack('extra')
-  <script src="{{ asset('vendor/bootstrap-5.1.0/js/bootstrap.js') }}"></script>
+  <script src="{{ asset('base/vendor/bootstrap-5.1.0/js/bootstrap.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="{{ asset('vendor/dinobox/currency.min.js') }}"></script>
+  <script src="{{ asset('base/vendor/dinobox/currency.min.js') }}"></script>
   @if ($t->getConfigJs())
     <script>
       {!! $t->getConfigJs() !!}

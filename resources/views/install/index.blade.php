@@ -253,7 +253,6 @@
       pass.classList.add('is-invalid');
     }
 
-
     if (name.value.length>4 && email.value.length>8 && pass.value.length>=8) {
       return true;
     }
