@@ -1,35 +1,35 @@
-# Imagen base de PHP
-FROM php:8.0.2-fpm
+# Imagen base con PHP 8.0 y Apache
+FROM php:8.0-apache
 
-# Actualizar lista de paquetes e instalar extensiones de PHP necesarias
-RUN apt-get update && apt-get install -y \
-    git \
-    zip \
-    curl \
-    unzip \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+# Instalar dependencias de Laravel
+RUN apt-get update && \
+    apt-get install -y \
+        libzip-dev \
+        zip \
+        unzip \
+        libpng-dev \
+        libonig-dev \
+        libxml2-dev && \
+    docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip && \
+    pecl install redis && \
+    docker-php-ext-enable redis
 
-# Instalar Node.js y npm
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
+# Habilitar mod_rewrite de Apache
+RUN a2enmod rewrite
 
-# Copiar los archivos del proyecto a la imagen de Docker
+# Copiar archivos del proyecto al contenedor
 COPY . /var/www/html
 
-# Cambiar los permisos de los archivos del proyecto
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Configuración de Apache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache && \
+    cp /var/www/html/.env.example /var/www/html/.env && \
+    php /var/www/html/artisan key:generate && \
+    php /var/www/html/artisan config:cache && \
+    php /var/www/html/artisan route:cache
 
-# Instalar las dependencias de Composer y Node.js
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN npm install --global npm
-RUN cd /var/www/html && composer install && npm install && npm run dev
+# Puerto expuesto por el contenedor
+EXPOSE 80
 
-# Exponer el puerto 9000 de PHP-FPM
-EXPOSE 9000
-
-# Ejecutar el servidor PHP-FPM
-CMD ["php-fpm"]
+# Comando para iniciar Apache
+CMD ["apache2-foreground"]
