@@ -7,8 +7,8 @@ use App\Services\Imagen;
 
 class TiendaPresenter extends Presenter
 {
-  private $img = "/assets/img/logo.png";
-  private $icono = "/assets/rawrshop/ico.svg";
+  private $img = "base/assets/img/logo.png";
+  private $icono = "base/assets/rawrshop/ico.svg";
 // 'assets/rawrshop/shop.gif'
   public function getLogo(){
     return (new Imagen($this->model->logo, null, $this->img))->call();

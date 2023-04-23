@@ -8,8 +8,8 @@ use App\Services\Imagen;
 class ProductoVariablePresenter extends Presenter
 {
   private $images = [
-    'assets/rawrshop/product01.jpg',
-    'assets/rawrshop/product02.jpg'
+    'base/assets/rawrshop/product01.jpg',
+    'base/assets/rawrshop/product02.jpg'
   ];
 
   private $visibilidad = [

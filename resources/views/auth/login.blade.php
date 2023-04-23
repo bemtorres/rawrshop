@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rawrshop - Iniciar sesión</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="{{ mix('base/css/app.css') }}">
+  <title>Rawrshop - Iniciar sesión</title>
+  {!! $t->present()->getFavicon() !!}
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('base/css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('base/vendors/mazer/css/pages/auth.css') }}">
 </head>
 <body>
@@ -14,7 +15,7 @@
   <div class="container col-xl-10 col-xxl-8 py-5">
     <div class="row align-items-center py-5">
       <div class="col-lg-7 text-center text-lg-start d-none d-sm-block">
-        <img src="{{ asset('assets/rawrshop/shop.gif') }}" class="figure-img img-fluid rounded shadow-lg" alt="">
+        <img src="{{ asset('base/assets/rawrshop/shop.gif') }}" class="figure-img img-fluid rounded shadow-lg" alt="">
         {{-- <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1> --}}
         {{-- <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> --}}
       </div>
@@ -52,8 +53,8 @@
     </div>
   </div>
 </div>
-<script src="{{ mix('js/manifest.js') }}"></script>
-<script src="{{ mix('js/vendor.js') }}"></script>
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('base/js/manifest.js') }}"></script>
+<script src="{{ asset('base/js/vendor.js') }}"></script>
+<script src="{{ asset('base/js/app.js') }}"></script>
 </body>
 </html>

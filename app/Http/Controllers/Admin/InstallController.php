@@ -22,15 +22,15 @@ class InstallController extends Controller
     try {
       $t = Tienda::firstOrFail();
       if ($t->getConfigInstall()) {
-        // $t = new Tienda();
         $password  = hash('sha256', $request->input('password'));
         $correo = $request->input('correo');
 
-        $t = new Tienda();
         $t->nombre =  $request->input('nombre_pagina');
         $t->correo =  $correo;
         $t->rubro =  $request->input('rubro');
         $t->tipo =  $request->input('tipo');
+        $t->config = [];
+        $t->estado = 2; //mantenimiento
         $t->save();
 
         $a = new Usuario();
@@ -40,7 +40,7 @@ class InstallController extends Controller
         $a->admin = true;
         $a->save();
 
-        return redirect()->route('acceso')->with('Felicidades, disfruta tu tienda');
+        return redirect()->route('acceso')->with('success','Felicidades, disfruta tu tienda');
       } else {
         return redirect('/');
       }
