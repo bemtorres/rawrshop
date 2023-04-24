@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\InstallController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -93,8 +94,8 @@ Route::middleware('usuario')->group( function () {
 });
 
 // INSTALL
-Route::get('install','Admin\InstallController@index')->name('install.index');
-Route::post('install','Admin\InstallController@store')->name('install.store');
+Route::get('install',[InstallController::class,'index'])->name('install.index');
+Route::post('install',[InstallController::class,'store'])->name('install.store');
 
 Route::get('acceso','Auth\AuthController@index')->name('acceso');
 Route::post('acceso','Auth\AuthController@login')->name('acceso');
@@ -111,14 +112,9 @@ Route::get('categorias/{type}/{code}','HomeController@categoria')->name('home.ca
 Route::post('producto/newsletter','HomeController@newsletter')->name('home.newsletter');
 Route::get('mantenimiento', 'HomeController@mantenimiento')->name('home.mantenimiento');
 
-
-// @API
-Route::post('api/product/find','Api\ProductoController@find')->name('api.v1.product.find');
-
 Route::middleware('usuario')->group( function () {
   Route::get('edicion','HomeController@indexEdicion')->name('home.index.edicion');
   Route::get('edicion/blog/{code}','HomeController@blogEdicion')->name('home.blog.edicion');
-
 });
 
 
@@ -127,8 +123,3 @@ Route::get('/sitemap.xml', 'SitemapController@index')->name('sitemap.index');
 Route::get('/sitemap.xml/categorias', 'SitemapController@categorias')->name('sitemap.categorias');
 Route::get('/sitemap.xml/subcategorias', 'SitemapController@subcategorias')->name('sitemap.subcategorias');
 Route::get('/sitemap.xml/productos', 'SitemapController@productos')->name('sitemap.productos');
-
-
-Route::get('/debug-sentry', function () {
-  throw new Exception('My first Sentry error!');
-});
