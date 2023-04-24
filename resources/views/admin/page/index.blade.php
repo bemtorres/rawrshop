@@ -53,7 +53,7 @@
 </div>
 @endsection
 @push('javascript')
-<script src="{{ asset('vendors/sortableJS/js/Sortable.js') }}"></script>
+<script src="{{ asset('base/vendors/sortableJS/js/Sortable.js') }}"></script>
 <script>
   const url = "{{ route('pagina.changePosition') }}";
   var el = document.getElementById('items');

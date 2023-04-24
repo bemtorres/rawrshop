@@ -1,9 +1,9 @@
 @extends('home.app')
 @push('stylesheet')
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/index.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/favorite.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/index.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/OwlCarousel/assets/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/OwlCarousel/assets/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/favorite.css') }}">
 <style>
   .cardd-hover:hover {
     transform: scale(1.04);
@@ -22,15 +22,15 @@
 {{-- @include('home._nav') --}}
 @include('home._banner')
 {{-- @include('home._slider_banner') --}}
-@if ($isMobile)
+{{-- @if ($isMobile)
 <div class="container py-2">
-  <img src="assets/banner/banner01app.jpg" class="img-fluid item" alt="">
+  <img src="base/assets/banner/banner01app.jpg" class="img-fluid item" alt="">
 </div>
 @else
 <div class="container py-2">
-  <img src="assets/banner/banner01web.jpg" class="img-fluid item" alt="">
+  <img src="base/assets/banner/banner01web.jpg" class="img-fluid item" alt="">
 </div>
-@endif
+@endif --}}
 
 {{-- <div class="col-md-12">
   <div class="col-md-2 col-lg-2 col-md-3 col-6 offset-md-0 mb-2 d-flex align-items-center">
@@ -103,9 +103,9 @@
 @include('home._redes_vertical')
 @endsection
 @push('javascript')
-<script src="{{ asset('vendor/dinobox/cart.js') }}"></script>
-<script src="{{ asset('vendor/rawrshop/menu.js') }}"></script>
-<script src="{{ asset('vendor/OwlCarousel/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('base/vendor/dinobox/cart.js') }}"></script>
+<script src="{{ asset('base/vendor/rawrshop/menu.js') }}"></script>
+<script src="{{ asset('base/vendor/OwlCarousel/owl.carousel.min.js')}}"></script>
 <script>
   $('.owl-carousel').owlCarousel({
     stagePadding: 50,

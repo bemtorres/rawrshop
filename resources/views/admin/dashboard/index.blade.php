@@ -270,6 +270,6 @@
 </div>
 @endsection
 @push('javascript')
-{{-- <script src="{{ asset('vendors/apexcharts/apexcharts.js') }}"></script> --}}
-{{-- <script src="{{ asset('vendors/mazer/js/pages/dashboard.js') }}"></script> --}}
+{{-- <script src="{{ asset('base/vendors/apexcharts/apexcharts.js') }}"></script> --}}
+{{-- <script src="{{ asset('base/vendors/mazer/js/pages/dashboard.js') }}"></script> --}}
 @endpush

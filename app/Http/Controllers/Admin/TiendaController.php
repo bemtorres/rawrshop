@@ -429,6 +429,7 @@ class TiendaController extends Controller
   public function theme() {
     try {
       $t = Tienda::first();
+
       $colors = Globales::TYPES_COLORS;
       $themes = Themes::THEMES;
 

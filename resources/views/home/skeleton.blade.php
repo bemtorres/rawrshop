@@ -15,13 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="{{ asset('base/vendor/bootstrap-5.1.0/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="	https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   @if ($t->presentRRSS()->chat('enabled'))
   <link rel="stylesheet" href="{{ asset('base/vendor/chat/floating-wpp.css') }}">
   @endif
   <link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/theme.css') }}">
-  @if ($t->getConfigTheme())
-  <link rel="stylesheet" href="base/{{ $t->getConfigThemeCSS() }}">
+  @if ($t->getConfigThemeCSS())
+  <link rel="stylesheet" href="{{ $t->getConfigThemeCSS() }}">
   @endif
   @if ($t->getConfigCss())
   <style>

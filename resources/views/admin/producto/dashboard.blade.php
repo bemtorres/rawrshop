@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('stylesheet')
 {{-- <link rel="stylesheet" href="vendor/datatables-bs4/css/dataTables.bootstrap4.css"> --}}
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/index.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/index.css') }}">
 
 <style>
   .card .card-img-overlay {

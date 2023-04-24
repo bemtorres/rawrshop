@@ -1,7 +1,7 @@
 @extends('home.app')
 @push('stylesheet')
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/index.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/rawrshop/favorite.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/index.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/rawrshop/favorite.css') }}">
 @endpush
 @section('content')
 @include('home._header')
@@ -64,6 +64,6 @@
 @include('home._redes_vertical')
 @endsection
 @push('javascript')
-<script src="{{ asset('vendor/dinobox/cart.js') }}"></script>
-<script src="{{ asset('vendor/rawrshop/menu.js') }}"></script>
+<script src="{{ asset('base/vendor/dinobox/cart.js') }}"></script>
+<script src="{{ asset('base/vendor/rawrshop/menu.js') }}"></script>
 @endpush

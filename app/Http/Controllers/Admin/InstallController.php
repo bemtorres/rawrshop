@@ -22,13 +22,14 @@ class InstallController extends Controller
     try {
       $t = Tienda::firstOrFail();
       if ($t->getConfigInstall()) {
-        $password  = hash('sha256', $request->input('password'));
+        $password = hash('sha256', $request->input('password'));
         $correo = $request->input('correo');
 
-        $t->nombre =  $request->input('nombre_pagina');
-        $t->correo =  $correo;
-        $t->rubro =  $request->input('rubro');
-        $t->tipo =  $request->input('tipo');
+        $t->nombre = $request->input('nombre_pagina');
+        $t->correo = $correo;
+        $t->rubro = $request->input('rubro');
+        $t->tipo = $request->input('tipo');
+        $t->descripcion = $request->input('descripcion');
         $t->config = [];
         $t->estado = 2; //mantenimiento
         $t->save();

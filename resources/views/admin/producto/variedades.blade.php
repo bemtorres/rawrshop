@@ -86,7 +86,7 @@
 
 @endsection
 @push('javascript')
-<script src="{{ asset('vendors/sortableJS/js/Sortable.js') }}"></script>
+<script src="{{ asset('base/vendors/sortableJS/js/Sortable.js') }}"></script>
 
 <script>
   const url = "{{ route('variedad.changePosition',$p->id) }}";

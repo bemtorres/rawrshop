@@ -126,7 +126,7 @@
 </div>
 @endsection
 @push('javascript')
-<script src="{{ asset('vendor/dinobox/preview-image.js') }}"></script>
+<script src="{{ asset('base/vendor/dinobox/preview-image.js') }}"></script>
 <script>
 
   let code = document.getElementById('input-codigo');

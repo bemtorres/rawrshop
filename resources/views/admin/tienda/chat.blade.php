@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('stylesheet')
-<link rel="stylesheet" href="{{ asset('vendor/chat/floating-wpp.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendor/chat/floating-wpp.css') }}">
 
 @endpush
 @section('content')

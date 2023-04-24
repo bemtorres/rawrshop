@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('stylesheet')
-<link rel="stylesheet" href="{{ asset('vendors/summernote/summernote-lite.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendors/summernote/summernote-lite.min.css') }}">
 <style>
   select{
   padding:8px 5px;
@@ -145,5 +145,5 @@
 </div>
 @endsection
 @push('javascript')
-<script src="{{ asset('vendor/dinobox/preview-image.js') }}"></script>
+<script src="{{ asset('base/vendor/dinobox/preview-image.js') }}"></script>
 @endpush

@@ -13,7 +13,7 @@
       // backgroundColor: 'crimson',
       size: "{{ $t->presentRRSS()->chat('size') }}px",
       position: "right",
-      buttonImage: '<img src="base/vendor/chat/whatsapp.svg" alt="img-whatsapp" />'
+      buttonImage: '<img src="{{ asset('base/vendor/chat/whatsapp.svg') }}" alt="img-whatsapp" />'
     });
   });
 </script>

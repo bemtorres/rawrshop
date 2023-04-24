@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('stylesheet')
-<link rel="stylesheet" href="{{ asset('vendors/summernote/summernote-lite.min.css') }}">
+<link rel="stylesheet" href="{{ asset('base/vendors/summernote/summernote-lite.min.css') }}">
 @endpush
 @section('content')
 <div class="page-heading">
@@ -61,7 +61,7 @@
 
 
 @endsection @push('javascript')
-<script src="{{ asset('vendors/summernote/summernote-lite.min.js') }}"></script>
+<script src="{{ asset('base/vendors/summernote/summernote-lite.min.js') }}"></script>
 <script>
   $('#input-content').summernote({
     tabsize: 2,

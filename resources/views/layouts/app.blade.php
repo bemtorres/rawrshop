@@ -5,8 +5,8 @@
     padding: 1rem;
   }
 </style>
-@if (current_shop()->getConfigThemeAdmin())
-  <link rel="stylesheet" href="base/{{ current_shop()->getConfigThemeAdminCSS() }}">
+@if (current_shop()->getConfigThemeAdminCSS())
+<link rel="stylesheet" href="{{ current_shop()->getConfigThemeAdminCSS() }}">
 @endif
 @endpush
 @section('app')

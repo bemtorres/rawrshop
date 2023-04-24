@@ -90,7 +90,7 @@
   }
 </script>
 
-<script src="{{ asset('vendors/sortableJS/js/Sortable.js') }}"></script>
+<script src="{{ asset('base/vendors/sortableJS/js/Sortable.js') }}"></script>
 
 <script>
   const url = "{{ route('subcategoria.changePosition') }}";
