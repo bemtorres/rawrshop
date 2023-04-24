@@ -14,11 +14,17 @@ use App\Models\Sistema\Tienda;
 use App\Services\Sistema\Globales;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
-
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
   public function index() {
+
+    // $response = Http::withOptions(['verify' => falsse])->get('https://rickandmortyapi.com/api/character/');
+    // $characters = $response->json()['results'];
+
+    // return $characters;
+
     $t = Tienda::first();
 
     if ($t->getConfigInstall()) { return redirect()->route('install.index'); }
