@@ -27,6 +27,7 @@ class HomeController extends Controller
 
     $t = Tienda::first();
 
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
     if ($t->getConfigInstall()) { return redirect()->route('install.index'); }
     if ($t->getSeoEnabled()) { $this->seo($t->present()->dataSeo()); }
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
@@ -67,6 +68,7 @@ class HomeController extends Controller
 
   public function find(Request $request) {
     $t = Tienda::first();
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
     if (!$t) { return redirect()->route('install.index'); }
     if ($t->getSeoEnabled()) { $this->seo($t->present()->dataSeo()); }
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
@@ -102,7 +104,7 @@ class HomeController extends Controller
 
   public function producto($code) {
     $t = Tienda::first();
-
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
 
     $p = Producto::where('activo',true)->where('codigo',$code)->firstOrFail();
@@ -134,7 +136,7 @@ class HomeController extends Controller
 
   public function blog($codigo){
     $t = Tienda::first();
-
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
 
     $categorias = Categoria::where('activo',true)->with(['subs'])->get();
@@ -149,6 +151,8 @@ class HomeController extends Controller
 
   public function categoria($tipo, $codigo) {
     $t = Tienda::first();
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
+
     $paginator = $t->getConfigPaginator();
 
     if ($t->getMantenimientoEnabled()) { return redirect()->route('home.mantenimiento'); }
@@ -192,6 +196,8 @@ class HomeController extends Controller
 
   public function indexEdicion() {
     $t = Tienda::first();
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
+
     $paginator = $t->getConfigPaginator();
     $paginas = Pagina::where('estado',2)->orderBy('posicion','desc')->get();
     $categorias = Categoria::where('activo',true)->with(['subs','productos','subs','subs.productos'])->get();
@@ -218,6 +224,8 @@ class HomeController extends Controller
 
   public function blogEdicion($codigo){
     $t = Tienda::first();
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
+
     $p = Pagina::where('code',$codigo)->firstOrFail();
 
     $mode_edit = true;
@@ -241,6 +249,8 @@ class HomeController extends Controller
 
   public function mantenimiento() {
     $t = Tienda::first();
+    if ($t->getConfigWebOnlyLogin()) { return redirect()->route('acceso');}
+
     if (!$t->getMantenimientoEnabled()) {
       return redirect()->route('home.index');
     }

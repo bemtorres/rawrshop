@@ -22,7 +22,7 @@
       <div class="col-md-10 mx-auto col-lg-5">
         <div class="text-center">
           <div class="mb-2">
-            <img src="{{ asset($t->present()->getLogo()) }}" width="100px" class="figure-img img-fluid rounded shadow" alt="">
+            <img src="{{ asset($t->present()->getLogo()) }}" width="100px" class="figure-img img-fluid" alt="">
           </div>
           <h3 class="mb-3">
             {{ $t->nombre ?? '' }}

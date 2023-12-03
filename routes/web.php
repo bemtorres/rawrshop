@@ -2,54 +2,21 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\InstallController;
+use App\Http\Controllers\Admin\TiendaController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('usuario')->group( function () {
   Route::get('dashboard', [AdminDashboardController::class,'index'])->name('dashboard.index');
 
-  Route::get('tienda', 'Admin\TiendaController@index')->name('tienda.index');
-  Route::get('tienda/integracion', 'Admin\TiendaController@integracion')->name('tienda.integracion');
-  Route::put('tienda', 'Admin\TiendaController@update')->name('tienda.update');
-  Route::get('tienda/rrss', 'Admin\TiendaController@rrss')->name('tienda.rrss');
-  Route::put('tienda/rrss', 'Admin\TiendaController@rrssUpdate')->name('tienda.rrss');
-  Route::put('tienda/rrss_enabled', 'Admin\TiendaController@rrssUpdateEnabled')->name('tienda.rrss.enabled');
 
-  Route::get('tienda/chat', 'Admin\TiendaController@chat')->name('tienda.chat');
-  Route::put('tienda/chat', 'Admin\TiendaController@chatUpdate')->name('tienda.chat.update');
+  Route::get('pagina', 'Admin\PaginaController@index')->name('pagina.index');
+  Route::get('pagina/create', 'Admin\PaginaController@create')->name('pagina.create');
+  Route::post('pagina', 'Admin\PaginaController@store')->name('pagina.store');
+  Route::get('pagina/{id}', 'Admin\PaginaController@show')->name('pagina.show');
+  Route::get('pagina/{id}/edit', 'Admin\PaginaController@edit')->name('pagina.edit');
+  Route::put('pagina/{id}', 'Admin\PaginaController@update')->name('pagina.update');
 
-  Route::get('tienda/web', 'Admin\TiendaController@web')->name('tienda.web');
-  Route::put('tienda/web', 'Admin\TiendaController@webUpdate')->name('tienda.web.update');
-  Route::put('tienda/web_enabled', 'Admin\TiendaController@webUpdateEnabled')->name('tienda.web.update.enabled');
-  Route::get('tienda/footer', 'Admin\TiendaController@footer')->name('tienda.footer');
-  Route::put('tienda/footer', 'Admin\TiendaController@footerUpdate')->name('tienda.footer.update');
-
-  Route::get('tienda/theme', 'Admin\TiendaController@theme')->name('tienda.theme');
-  Route::put('tienda/theme', 'Admin\TiendaController@themeUpdate')->name('tienda.theme.update');
-
-  Route::get('tienda/assets', 'Admin\TiendaController@assets')->name('tienda.assets');
-  Route::put('tienda/assets', 'Admin\TiendaController@assetsUpdate')->name('tienda.assets');
-  Route::put('tienda/title', 'Admin\TiendaController@titleUpdate')->name('tienda.title.update');
-  Route::get('tienda/seo', 'Admin\TiendaController@seo')->name('tienda.seo');
-  Route::put('tienda/seo', 'Admin\TiendaController@seoUpdate')->name('tienda.seo.update');
-  Route::get('tienda/seo', 'Admin\TiendaController@seo')->name('tienda.seo');
-  Route::get('tienda/pay', 'Admin\TiendaController@pay')->name('tienda.pay');
-  Route::put('tienda/pay', 'Admin\TiendaController@payUpdate')->name('tienda.pay.update');
-  Route::get('tienda/pro', 'Admin\TiendaController@pro')->name('tienda.pro');
-  Route::put('tienda/pro', 'Admin\TiendaController@proUpdate')->name('tienda.pro.update');
-
-  Route::get('tienda/codigo', 'Admin\TiendaController@codigo')->name('tienda.codigo');
-  Route::put('tienda/codigo/js', 'Admin\TiendaController@codigoJs')->name('tienda.codigo.js');
-  Route::put('tienda/codigo/css', 'Admin\TiendaController@codigoCss')->name('tienda.codigo.css');
-  Route::get('tienda/mantenimiento', 'Admin\TiendaController@mantenimiento')->name('tienda.mantenimiento');
-  Route::put('tienda/mantenimiento', 'Admin\TiendaController@mantenimientoUpdate')->name('tienda.mantenimiento.update');
-
-  Route::get('tienda/pagina', 'Admin\PaginaController@index')->name('pagina.index');
-  Route::get('tienda/pagina/create', 'Admin\PaginaController@create')->name('pagina.create');
-  Route::post('tienda/pagina', 'Admin\PaginaController@store')->name('pagina.store');
-  Route::get('tienda/pagina/{id}', 'Admin\PaginaController@show')->name('pagina.show');
-  Route::get('tienda/pagina/{id}/edit', 'Admin\PaginaController@edit')->name('pagina.edit');
-  Route::put('tienda/pagina/{id}', 'Admin\PaginaController@update')->name('pagina.update');
 
   Route::resource('productos', 'Admin\ProductoController');
   Route::get('producto/agotados', 'Admin\ProductoController@indexAgotados')->name('productos.agotados');

@@ -9,7 +9,6 @@ use App\Services\SeoConfig;
 use App\Services\Sistema\Globales;
 use App\Services\Themes;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class TiendaController extends Controller
 {
@@ -375,12 +374,6 @@ class TiendaController extends Controller
 
   public function mantenimiento() {
     try {
-      // return [
-      //   'linux' => public_path('\storage\Features/' .'Name'.".".'png'),
-      //   'win' => public_path('storage\Features/' .'Name'.".".'png'),
-      //   'state' => strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'WINDOWS' : 'LINUX',
-      //   'aa' => public_path('storage' . DIRECTORY_SEPARATOR),
-      // ];
       $t = Tienda::first();
       return view('admin.tienda.mantenimiento', compact('t'));
     } catch (\Throwable $th) {
@@ -392,6 +385,13 @@ class TiendaController extends Controller
     try {
       $t = Tienda::first();
       $t->estado = $request->input('mantenimiento_enabled') ? 2 : 1;
+      $config = $t->config;
+      $config['web_only_login'] = $request->input('login_enabled') ? true : false;
+      $t->config = $config;
+      // public function getConfigWebEnabled() {
+      //   return $this->config['web_only_login'] ?? true;
+      // }
+
       $t->update();
       return back()->with('success','Se ha actualizado correctamente');
     } catch (\Throwable $th) {
