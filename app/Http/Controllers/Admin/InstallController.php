@@ -30,7 +30,10 @@ class InstallController extends Controller
         $t->rubro = $request->input('rubro');
         $t->tipo = $request->input('tipo');
         $t->descripcion = $request->input('descripcion');
-        $t->config = [];
+        $t->config = [
+          'web_only_login' => true
+        ];
+
         $t->estado = 2; //mantenimiento
         $t->save();
 
