@@ -1,4 +1,8 @@
-# Rawrshop
+# Rawrshop 2024
+
+-----
+- [Instalación](zreleases/install.md)
+- [Noticias 2024](zreleases/2024/index.md)
 
 Rawrshop es un sistema de gestión de contenidos, enfocado en la creación de cualquier tipo de página web, con licencia MIT.
 
@@ -42,27 +46,9 @@ Las características de Rawrshop incluyen:
 - [x] Módulo mantención
 - [X] Personalizar footer y modo suscriptor
 
-## INSTALACION
+## INSTALACION 
 
-- PHP 8.0.2 - Laravel 9.19
-- Mysql 5.7
-
-### Instalación
-Copy .env
-```shell
-cp .env.example .env
-```
-
-#### Instalación de componentes básicos
-```shell
-composer install
-php artisan storage:link
-```
-
-Migraciones
-```shell
-php artisan migrate:fresh --seed
-```
+- [Componentes de instalacion](zreleases/install.md)
 
 ## Advertencia
 
