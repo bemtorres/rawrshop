@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\TiendaController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('usuario')->prefix('tienda')->name('tienda.')->group( function () {
+Route::middleware('usuario')->prefix('admin/tienda')->name('tienda.')->group( function () {
 
   Route::get('/',[TiendaController::class,'index'])->name('index');
   Route::put('/',[TiendaController::class,'update'])->name('update');
