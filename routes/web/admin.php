@@ -1,46 +1,66 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PaginaController;
+use App\Http\Controllers\Admin\ProductoController;
+use App\Http\Controllers\Admin\SubcategoriaController;
+use App\Http\Controllers\Admin\TiendaController;
+use App\Http\Controllers\Admin\VariedadController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-// Route::middleware('auth.admininstrador')->prefix('admin')->namespace('Admin')->group( function () {
-// });
-// Route::middleware('usuario')->namespace('Admin')->name('admin.')->group( function () {
-//   Route::get('home','AdminController@index')->name('home');
-
-//   Route::get('tiendas','TiendaController@index')->name('tienda.index');
-//   Route::get('tiendas/create','TiendaController@create')->name('tienda.create');
-//   Route::post('tiendas','TiendaController@store')->name('tienda.store');
-//   Route::get('tiendas/{codigo}','TiendaController@show')->name('tienda.show');
-//   Route::get('tiendas/{codigo}/edit','TiendaController@edit')->name('tienda.edit');
-
-//   Route::get('tienda/{codigo}/productos','ProductoController@index')->name('producto.index');
-//   Route::get('tienda/{codigo}/productos/create','ProductoController@create')->name('producto.create');
-//   Route::post('tienda/{codigo}/productos','ProductoController@store')->name('producto.store');
-
-//   Route::get('tienda/{codigo}/productos/{id_producto}','ProductoController@show')->name('producto.show');
-//   Route::get('tienda/{codigo}/productos/{id_producto}/edit','ProductoController@edit')->name('producto.edit');
-
-//   Route::put('tienda/{codigo}/productos/{id_producto}/edit','ProductoController@update')->name('producto.update');//vista
-//   // Route::get('tienda/{codigo}/productos/{id_producto}/edit','ProductoController@update')->name('admin.producto.update');//editar
-
-//   Route::get('tienda/{codigo}/productos/{id_producto}/version','ProductoController@version')->name('producto.version');
-//   Route::post('tienda/{codigo}/productos/{id_producto}/version','VariedadController@store')->name('producto.version.store');
-
-//   //Route::get('tienda/{codigo}/productos/{id_producto}/version/create')->nmae('producto.version.create');
-
-//   // Route::put('tienda/{codigo}/productos/{id_producto}/version/{id}','VariedadController@update')->name('admin.producto.version.update');
-//   // Route::post('tienda/{codigo}/productos/{id_producto}/version/{id}','VariedadController@show')->name('admin.producto.version.show');
-
-//   // Route::put('tienda/{codigo}/productos','ProductoController@delete')->name('admin.producto.delete');
-
-//   // VERSION
-//   //Route::post('tienda/{codigo}/productos/version','VariedadController@store')->name('producto.version.store');
-
-//   Route::get('tienda/{codigo}/categorias','CategoriaController@index')->name('categoria.index');
-//   Route::post('tienda/{codigo}/categorias','CategoriaController@store')->name('categoria.store');
-//   Route::post('tienda/{codigo}/subcategorias','SubCategoriaController@store')->name('subcategoria.store');
+Route::middleware('usuario')->prefix('admin/')->group( function () {
+  Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
 
 
-//   Route::post('tienda/{codigo}/subcategorias','SubCategoriaController@store')->name('subcategoria.store');
-// });
-// Route::get('tienda/{codigo}/web_creator','Web\WebController@webCreator')->name('admin.web_creator');
+  Route::get('pagina', [PaginaController::class,'index'])->name('pagina.index');
+  Route::get('pagina/create', [PaginaController::class,'create'])->name('pagina.create');
+  Route::post('pagina', [PaginaController::class,'store'])->name('pagina.store');
+  Route::get('pagina/{id}', [PaginaController::class,'show'])->name('pagina.show');
+  Route::get('pagina/{id}/edit', [PaginaController::class,'edit'])->name('pagina.edit');
+  Route::put('pagina/{id}', [PaginaController::class,'update'])->name('pagina.update');
+
+
+  Route::resource('productos', ProductoController::class);
+  Route::get('producto/agotados', [ProductoController::class,'indexAgotados'])->name('productos.agotados');
+  Route::get('producto/favoritos', [ProductoController::class,'indexFavoritos'])->name('productos.favoritos');
+  Route::get('producto/eliminados', [ProductoController::class,'indexEliminados'])->name('productos.eliminados');
+  Route::get('producto/dashboard', [ProductoController::class,'indexDashboard'])->name('productos.dashboard');
+
+  Route::put('producto/favoritos', [ProductoController::class,'favoritoUpdate'])->name('productos.favoritos.update');
+  Route::put('producto/price', [ProductoController::class,'priceUpdate'])->name('productos.price.update');
+
+  Route::get('productos/{id}/variedades', [ProductoController::class,'variedades'])->name('productos.variedades');
+  Route::get('productos/{id}/variedad/create', [VariedadController::class,'create'])->name('variedad.create');
+  Route::post('productos/{id}/variedad/create', [VariedadController::class,'store'])->name('variedad.store');
+  Route::get('productos/{id}/seo', [ProductoController::class,'seo'])->name('productos.seo');
+  Route::put('productos/{id}/title', [ProductoController::class,'titleUpdate'])->name('productos.title.update');
+  Route::get('productos/{id}/assets', [ProductoController::class,'assets'])->name('productos.assets');
+  Route::put('productos/{id}/assets', [ProductoController::class,'assetsUpdate'])->name('productos.assets.update');
+  Route::delete('productos/{id}/assets', [ProductoController::class,'assetsDelete'])->name('productos.assets.delete');
+
+  Route::get('variedades/{id}/edit', [VariedadController::class,'edit'])->name('variedad.edit');
+  Route::put('variedades/{id}', [VariedadController::class,'update'])->name('variedad.update');
+
+  // Route::resource('clientes', 'Admin\TiendaController');
+  Route::resource('usuarios', TiendaController::class);
+  // Route::resource('servicios', 'Admin\CategoriaController');
+
+  Route::resource('categorias', CategoriaController::class);
+  Route::resource('subcategorias', SubcategoriaController::class);
+
+  // @API
+  Route::put('productos/{id}/variedad/changePosition', [VariedadController::class,'changePosition'])->name('variedad.changePosition');
+  Route::put('pagina/changePosition', [PaginaController::class, 'changePosition'])->name('pagina.changePosition');
+  Route::put('categoria/changePosition', [CategoriaController::class,'changePosition'])->name('categoria.changePosition');
+  Route::put('subcategoria/changePosition', [SubcategoriaController::class,'changePosition'])->name('subcategoria.changePosition');
+
+  Route::get('cache',function(){
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    return redirect()->route('dashboard.index')->with('succes', 'cache borrado');
+  })->name('utils.sistema.cache');
+
+});

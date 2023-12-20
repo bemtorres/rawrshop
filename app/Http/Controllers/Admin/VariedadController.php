@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Sistema\Categoria;
 use App\Models\Sistema\Producto;
-use App\Models\Sistema\Tienda;
 use App\Models\Sistema\Variedad;
 use App\Services\ImportImage;
 

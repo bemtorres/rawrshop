@@ -41,7 +41,21 @@
                           Al activar el mantenimiento la tienda se redireccionara en a mantenimiento
                         </label>
                       </div>
+
+
                     </div>
+                    <div class="col-md-4">
+                      <label for="input-enabled">Página inicial</label>
+                    </div>
+                    <div class="col-md-8 mb-2">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="login-enabled" name="login_enabled" {{ $t->getConfigWebOnlyLogin() ? 'checked' : '' }}>
+                        <label class="form-check-label" for="login-enabled">
+                          Activar sólo login
+                        </label>
+                      </div>
+                    </div>
+
                     <div class="col-sm-12 d-flex justify-content-end">
                       <button type="submit" class="btn btn-primary me-1 mb-1">Guardar</button>
                       {{-- <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button> --}}

@@ -56,6 +56,10 @@ class Tienda extends Model
     return $this->config['paginator'] ?? 3;
   }
 
+  public function getConfigWebOnlyLogin() {
+    return $this->config['web_only_login'] ?? false;
+  }
+
   public function getConfigColorFondo() {
     return $this->getConfigTienda()['background_color'] ?? self::COLOR_FONDO;
   }

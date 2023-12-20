@@ -79,6 +79,7 @@ class SubcategoriaController extends Controller
       }
       return response()->json(['message' => 'Se ha actualizado.'], 200);
     } catch (\Throwable $th) {
+      return $th;
       return response()->json(['message' => 'Error. Intente nuevamente'], 400);
     }
   }
